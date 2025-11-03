@@ -10,7 +10,7 @@ driver.get("https://royaleapi.com/player/VRV9CV9QP/decks")
 
 try:
     WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, 'img[data-card-key="hog-rider"]'))
+        EC.presence_of_element_located((By.CSS_SELECTOR, 'div.ui.padded.grid[id^="deck_"]'))
     )
 
     html_content = driver.page_source
@@ -19,14 +19,12 @@ try:
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
-    hog_rider_img = soup.find('img', attrs={'data-card-key': 'hog-rider'})
+    deck_containers = soup.select('div.ui.padded.grid[id^="deck_"]')
 
-    if hog_rider_img:
-        image_url = hog_rider_img['src']
-        alt_text = hog_rider_img['alt']
-        print(f"Found! Alt: {alt_text}, URL: {image_url}")
+    for deck in deck_containers:
+        print(deck)
     else:
-        print("Can't find card")
+        print("Can't find deck")
 
 except Exception as e:
     print(f"Error: {e}")

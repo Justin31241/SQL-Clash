@@ -58,7 +58,7 @@ def drop_card(connection, card_id):
 
     except Exception as e:
         print(e)
-
+        
 def main():
     connection = get_connection("clash.db")
     pulling = True
@@ -87,5 +87,6 @@ def main():
 
     finally:
         connection.close()
+
 if __name__ == "__main__":
     main()

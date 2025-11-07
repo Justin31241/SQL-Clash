@@ -22,11 +22,12 @@ try:
 
     soup = BeautifulSoup(html_content, 'html.parser')
 
+    print(soup.select('div.ui.padded.grid[id^="games"]'))
     deck_containers = soup.select('div.ui.padded.grid[id^="deck_"]')
-    #match_type = soup.select('div.ui.padded.grid[id^="deck_"]')
+    
 
     for deck in deck_containers:
-        print(deck)
+        print('Deck Found')
     else:
         print("Can't find deck")
 

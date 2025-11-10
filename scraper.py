@@ -46,5 +46,8 @@ if html_content:
         print("Can't find any decks (page might have failed to load completely).")
     else:
         print(f"Found {len(deck_containers)} decks:")
-        for index, deck in enumerate(deck_containers, 1):
+        for index, deck in enumerate(deck_containers[::2], 1):
             print(f" - Deck {index} Found (ID: {deck.get('id')})")
+
+
+
